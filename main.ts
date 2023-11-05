@@ -4,7 +4,7 @@ input.onLogoEvent(TouchButtonEvent.Touched, function () {
         choosenTeam = postes.removeAt(teamIndex)
         basic.showNumber(choosenTeam)
     } else {
-        basic.showIcon(IconNames.Happy)
+        basic.showIcon(IconNames.Yes)
     }
 })
 input.onButtonPressed(Button.A, function () {
