@@ -2,7 +2,7 @@ input.onLogoEvent(TouchButtonEvent.Touched, function () {
     if (postes.length > 0) {
         teamIndex = randint(0, postes.length - 1)
         choosenTeam = postes.removeAt(teamIndex)
-        basic.showNumber(choosenTeam)
+        basic.showString("" + (choosenTeam))
     } else {
         basic.showIcon(IconNames.Yes)
     }
@@ -25,19 +25,30 @@ input.onButtonPressed(Button.B, function () {
         music.play(music.builtinPlayableSoundEffect(soundExpression.sad), music.PlaybackMode.InBackground)
     }
 })
+input.onGesture(Gesture.Shake, function () {
+	
+})
 function initTeams () {
     postes = []
+    postePossible = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+    ]
     for (let teamIndex = 0; teamIndex <= teamCount - 1; teamIndex++) {
-        for (let index = 0; index < 5; index++) {
-            postes.push(teamIndex + 1)
+        for (let poste of postePossible) {
+            postes.push("" + (teamIndex + 1) + poste)
         }
     }
     control.waitMicros(1000)
     basic.showIcon(IconNames.SmallSquare)
 }
-let choosenTeam = 0
+let postePossible: string[] = []
+let choosenTeam = ""
 let teamIndex = 0
-let postes: number[] = []
+let postes: string[] = []
 let teamCount = 0
 teamCount = 6
 initTeams()
